@@ -1,0 +1,16 @@
+{
+    "tooltip": {
+        "name": "Tooltip",
+        "description": "A wrapper for the jquery ui tooltip",
+        "files": [
+            "./js/Tooltip.js"
+        ],
+        "dependencies": [
+            "jQuery",
+            "jQueryUICore",
+            "jQueryUIWidgets",
+            "normalize",
+            "framework"
+        ]
+    }
+}
