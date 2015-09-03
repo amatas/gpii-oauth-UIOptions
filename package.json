@@ -1,0 +1,24 @@
+{
+  "name": "gpii-express-oauth",
+  "version": "0.0.1",
+  "description": "GPII OAUTH module using gpii-express",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Alfredo Matas",
+  "license": "ISC",
+  "dependencies": {
+    "gpii-express": "git://github.com/GPII/gpii-express",
+    "infusion": "git://github.com/fluid-project/infusion.git#a930d31ca6430dad67566e712ccad5d333d74ddb",
+    "passport": "^0.3.0",
+    "passport-http-bearer": "^1.0.1",
+    "passport-oauth": "^1.0.0"
+  },
+  "devDependencies": {
+    "grunt-gpii": "git://github.com/GPII/grunt-gpii.git#58ae055833f437a9e91baedb9f39a22c5fdd727f",
+    "jqUnit": "git://github.com/fluid-project/node-jqUnit.git#d46bb932fa4069770852c51a92182939958f2d75",
+    "kettle": "git://github.com/fluid-project/kettle.git#e79bb81196df68c97eaa9f96c485a4321b69af75",
+    "request": "2.51.0"
+  }
+}
