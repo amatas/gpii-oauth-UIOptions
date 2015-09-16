@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "node test/all-tests.js",
+    "postinstall": "grunt dedupe-infusion"
   },
   "author": "Alfredo Matas",
   "license": "FreeBSD-3-Clause",
