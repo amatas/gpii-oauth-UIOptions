@@ -7,7 +7,7 @@
     "test": "mocha"
   },
   "author": "Alfredo Matas",
-  "license": "ISC",
+  "license": "FreeBSD-3-Clause",
   "dependencies": {
     "gpii-express": "git://github.com/GPII/gpii-express",
     "infusion": "git://github.com/fluid-project/infusion.git#a930d31ca6430dad67566e712ccad5d333d74ddb",
