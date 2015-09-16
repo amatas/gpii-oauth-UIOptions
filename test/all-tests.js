@@ -15,7 +15,7 @@ require("./includes.js");
 fluid.registerNamespace("gpii.oauth.tests.router.testEnvironment");
 
 fluid.defaults("gpii.oauth.tests.router.testEnvironment", {
-    gradeNames: ["fluid.test.testEnvironment", "autoInit"],
+    gradeNames: ["fluid.test.testEnvironment"],
     port: 8080,
     baseUrl: "http://localhost:8080/",
     events: {
