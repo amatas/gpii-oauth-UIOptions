@@ -1,5 +1,5 @@
 (function () {
-  'use strict';
+  "use strict";
 
   module.exports.findOrCreate = function (profile, cb) {
     console.log('findOrCreate profile', profile);

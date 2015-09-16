@@ -1,1 +1,1 @@
-require('./lib/gpii-oauth.js');
+require('./src/js/gpii-oauth.js');

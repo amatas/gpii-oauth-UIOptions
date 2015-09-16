@@ -1,7 +1,7 @@
 "use strict";
 var fluid = fluid || require("infusion"),
     path = require("path"),
-    contentDir = path.resolve(__dirname, "../content"),
+    contentDir = path.resolve(__dirname, "../../content"),
     gpii = fluid.registerNamespace("gpii"),
     passport = require('passport'),
     OAuth2Strategy = require("passport-oauth").OAuth2Strategy, 
