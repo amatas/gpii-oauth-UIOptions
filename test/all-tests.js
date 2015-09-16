@@ -11,7 +11,6 @@ var gpii  = fluid.registerNamespace("gpii");
 fluid.setLogging(true);
 
 require("./includes.js");
-require("gpii-express");
 
 fluid.registerNamespace("gpii.oauth.tests.router.testEnvironment");
 
