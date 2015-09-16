@@ -5,6 +5,9 @@ var jqUnit       = require("jqUnit");
 
 require("./test-helpers.js");
 
+// Bring in the extended test case holder that is designed to work with Kettle.
+require("../node_modules/gpii-express/tests/js/lib/test-helpers");
+
 fluid.setLogging(true);
 
 
@@ -20,24 +23,7 @@ gpii.oauth.tests.router.caseHolder.verifyContent = function (response, body, exp
 };
 
 fluid.defaults("gpii.oauth.tests.router.caseHolder", {
-    gradeNames: ["autoInit", "fluid.test.testCaseHolder"],
-    mergePolicy: {
-        rawModules:    "noexpand",
-        sequenceStart: "noexpand"
-    },
-    moduleSource: {
-        funcName: "gpii.oauth.tests.helpers.addRequiredSequences",
-        args:     ["{that}.options.sequenceStart", "{that}.options.rawModules"]
-    },
-    sequenceStart: [
-        {
-            func: "{testEnvironment}.events.constructServer.fire"
-        },
-        {
-            listener: "fluid.identity",
-            event: "{testEnvironment}.events.onStarted"
-        }
-    ],
+    gradeNames: ["gpii.express.tests.caseHolder"],
     rawModules:[
         {
             tests: [
