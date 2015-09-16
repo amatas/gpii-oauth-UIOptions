@@ -20,5 +20,6 @@
     "jqUnit": "git://github.com/fluid-project/node-jqUnit.git#d46bb932fa4069770852c51a92182939958f2d75",
     "kettle": "git://github.com/fluid-project/kettle.git#e79bb81196df68c97eaa9f96c485a4321b69af75",
     "request": "2.51.0"
-  }
+  },
+  "jshintConfig": ".jshintrc"
 }
