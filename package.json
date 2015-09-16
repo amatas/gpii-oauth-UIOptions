@@ -4,7 +4,7 @@
   "description": "GPII OAUTH module using gpii-express",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "node test/all-tests.js",
   },
   "author": "Alfredo Matas",
   "license": "FreeBSD-3-Clause",
