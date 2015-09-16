@@ -25,7 +25,7 @@ fluid.defaults("gpii.oauth.tests.router.testEnvironment", {
     components: {
         oauthServer:{
             createOnEvent: "constructServer",
-            type: "gpii.oauth",
+            type: "gpii.oauth.client",
             options: {
                 events: {
                     onStarted: "{testEnvironment}.events.onStarted"
