@@ -1,0 +1,14 @@
+<html>
+<head>
+<title>Client UIO Preferences loader</title>
+</head>
+<body>
+<script>
+if(typeof(Storage) !== "undefined") {
+	localStorage.setItem("Preferences", __JSON_STRINGIFY__);
+} else {
+    console.log("localStorage not suppported");
+}
+</script>
+</body>
+</html>
