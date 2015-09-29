@@ -7,8 +7,8 @@ require("../index");
 gpii.oauth.client({
     config: {
         express: {
-            port: 9999,
-            baseUrl: "http://localhost:9999/"
+            port: 8000,
+            baseUrl: "http://localhost:8000/"
         }
     }
 });
