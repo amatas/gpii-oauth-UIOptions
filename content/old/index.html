@@ -3,94 +3,79 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-        <title>Preferences Editor Demo: Using Schemas</title>
-        <link rel="stylesheet" type="text/css" href="lib/infusion/src/lib/normalize/css/normalize.css" />
-        <link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/core/css/fluid.css" />
+        <link rel="stylesheet" type="text/css" href="lib/normalize/css/normalize.css" />
+        <link rel="stylesheet" type="text/css" href="framework/core/css/fluid.css" />
 
-        <!-- CSS required for the Prefs Editor -->
-        <link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/preferences/css/Enactors.css" />
-        <link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/preferences/css/PrefsEditor.css" />
-        <link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/preferences/css/SeparatedPanelPrefsEditor.css" />
-        <link rel="stylesheet" type="text/css" href="lib/infusion/src/components/overviewPanel/css/OverviewPanel.css" />
+        <link rel="stylesheet" type="text/css" href="framework/preferences/css/Enactors.css" />
+        <link rel="stylesheet" type="text/css" href="framework/preferences/css/PrefsEditor.css" />
+        <link rel="stylesheet" type="text/css" href="framework/preferences/css/SeparatedPanelPrefsEditor.css" />
+        <link rel="stylesheet" type="text/css" href="components/overviewPanel/css/OverviewPanel.css" />
         <link rel="stylesheet" type="text/css" href="css/uiOptions.css" />
 
-        <script type="text/javascript" src="lib/infusion/src/lib/jquery/core/js/jquery.js"></script>
-        <script type="text/javascript" src="lib/infusion/src/lib/jquery/ui/js/jquery.ui.core.js"></script>
-        <script type="text/javascript" src="lib/infusion/src/lib/jquery/ui/js/jquery.ui.widget.js"></script>
-        <script type="text/javascript" src="lib/infusion/src/lib/jquery/ui/js/jquery.ui.mouse.js"></script>
-        <script type="text/javascript" src="lib/infusion/src/lib/jquery/ui/js/jquery.ui.slider.js"></script>
-        <!--<script type="text/javascript" src="lib/buzz/js/buzz.js"></script>-->
-        <!--[if IE 8]>
-            <script type="text/javascript" src="lib/html5shiv/js/html5shiv.js"></script>
-        <![endif]-->
+        <title>Preferences Editor Demo: Using Schemas</title>
+        <script type="text/javascript" src="lib/jquery/core/js/jquery.js"></script>
+        <script type="text/javascript" src="lib/jquery/ui/js/jquery.ui.core.js"></script>
+        <script type="text/javascript" src="lib/jquery/ui/js/jquery.ui.widget.js"></script>
+        <script type="text/javascript" src="lib/jquery/ui/js/jquery.ui.mouse.js"></script>
+        <script type="text/javascript" src="lib/jquery/ui/js/jquery.ui.slider.js"></script>
+        <script type="text/javascript" src="lib/json/js/json2.js"></script>
 
-        <script type="text/javascript" src="lib/infusion/src/framework/core/js/FluidDocument.js"></script>
-        <script type="text/javascript" src="lib/infusion/src/framework/core/js/jquery.keyboard-a11y.js"></script>
-        <script type="text/javascript" src="lib/infusion/src/framework/core/js/Fluid.js"></script>
-        <script type="text/javascript" src="lib/infusion/src/framework/core/js/FluidRequests.js"></script>
-        <script type="text/javascript" src="lib/infusion/src/framework/core/js/FluidDOMUtilities.js"></script>
-        <script type="text/javascript" src="lib/infusion/src/framework/core/js/FluidIoC.js"></script>
-        <script type="text/javascript" src="lib/infusion/src/framework/core/js/DataBinding.js"></script>
-        <script type="text/javascript" src="lib/infusion/src/framework/core/js/ModelTransformation.js"></script>
-        <script type="text/javascript" src="lib/infusion/src/framework/core/js/ModelTransformationTransforms.js"></script>
-        <script type="text/javascript" src="lib/infusion/src/framework/core/js/FluidView.js"></script>
-        <script type="text/javascript" src="lib/infusion/src/lib/fastXmlPull/js/fastXmlPull.js"></script>
-        <script type="text/javascript" src="lib/infusion/src/framework/renderer/js/fluidParser.js"></script>
-        <script type="text/javascript" src="lib/infusion/src/framework/renderer/js/fluidRenderer.js"></script>
-        <script type="text/javascript" src="lib/infusion/src/framework/renderer/js/RendererUtilities.js"></script>
-        <script type="text/javascript" src="lib/infusion/src/framework/enhancement/js/ContextAwareness.js"></script>
-        <script type="text/javascript" src="lib/infusion/src/framework/enhancement/js/ProgressiveEnhancement.js"></script>
+        <script type="text/javascript" src="framework/core/js/FluidDocument.js"></script>
+        <script type="text/javascript" src="framework/core/js/jquery.keyboard-a11y.js"></script>
+        <script type="text/javascript" src="framework/core/js/Fluid.js"></script>
+        <script type="text/javascript" src="framework/core/js/FluidRequests.js"></script>
+        <script type="text/javascript" src="framework/core/js/FluidDOMUtilities.js"></script>
+        <script type="text/javascript" src="framework/core/js/FluidIoC.js"></script>
+        <script type="text/javascript" src="framework/core/js/DataBinding.js"></script>
+        <script type="text/javascript" src="framework/core/js/ModelTransformation.js"></script>
+        <script type="text/javascript" src="framework/core/js/ModelTransformationTransforms.js"></script>
+        <script type="text/javascript" src="framework/core/js/FluidView.js"></script>
+        <script type="text/javascript" src="lib/fastXmlPull/js/fastXmlPull.js"></script>
+        <script type="text/javascript" src="framework/renderer/js/fluidParser.js"></script>
+        <script type="text/javascript" src="framework/renderer/js/fluidRenderer.js"></script>
+        <script type="text/javascript" src="framework/renderer/js/RendererUtilities.js"></script>
 
-        <script type="text/javascript" src="lib/infusion/src/framework/preferences/js/URLUtilities.js"></script>
-        <script type="text/javascript" src="lib/infusion/src/framework/preferences/js/Store.js"></script>
-        <script type="text/javascript" src="lib/infusion/src/components/textfieldSlider/js/TextfieldSlider.js"></script>
-        <script type="text/javascript" src="lib/infusion/src/framework/preferences/js/UIEnhancer.js"></script>
-        <script type="text/javascript" src="lib/infusion/src/framework/preferences/js/PrefsEditor.js"></script>
-        <script type="text/javascript" src="lib/infusion/src/framework/preferences/js/Panels.js"></script>
-        <script type="text/javascript" src="lib/infusion/src/framework/preferences/js/SelfVoicingPanel.js"></script>
-        <script type="text/javascript" src="lib/infusion/src/framework/preferences/js/Enactors.js"></script>
-        <script type="text/javascript" src="lib/infusion/src/framework/preferences/js/SelfVoicingEnactor.js"></script>
-        <script type="text/javascript" src="lib/infusion/src/framework/preferences/js/SeparatedPanelPrefsEditor.js"></script>
-        <script type="text/javascript" src="lib/infusion/src/components/slidingPanel/js/SlidingPanel.js"></script>
-        <script type="text/javascript" src="lib/infusion/src/components/tableOfContents/js/TableOfContents.js"></script>
-        <script type="text/javascript" src="lib/infusion/src/framework/preferences/js/PrimaryBuilder.js"></script>
-        <script type="text/javascript" src="lib/infusion/src/framework/preferences/js/AuxBuilder.js"></script>
-        <script type="text/javascript" src="lib/infusion/src/framework/preferences/js/StarterSchemas.js"></script>
-        <script type="text/javascript" src="lib/infusion/src/framework/preferences/js/SelfVoicingSchemas.js"></script>
-        <script type="text/javascript" src="lib/infusion/src/framework/preferences/js/StarterSchemas.js"></script>
-        <script type="text/javascript" src="lib/infusion/src/framework/preferences/js/Builder.js"></script>
-        <!--<script type="text/javascript" src="lib/infusion/src/components/uiOptions/js/UIOptions.js"></script>-->
-        <script type="text/javascript" src="lib/infusion/src/components/textToSpeech/js/TextToSpeech.js"></script>
-
-        <script type="text/javascript" src="js/MyPreferences.js"></script>
+        <script type="text/javascript" src="framework/preferences/js/URLUtilities.js"></script>
+        <script type="text/javascript" src="framework/preferences/js/Store.js"></script>
+        <script type="text/javascript" src="components/textfieldSlider/js/TextfieldSlider.js"></script>
+        <script type="text/javascript" src="framework/preferences/js/UIEnhancer.js"></script>
+        <script type="text/javascript" src="framework/preferences/js/PrefsEditor.js"></script>
+        <script type="text/javascript" src="framework/preferences/js/Panels.js"></script>
+        <script type="text/javascript" src="framework/preferences/js/Enactors.js"></script>
+        <script type="text/javascript" src="framework/preferences/js/SeparatedPanelPrefsEditor.js"></script>
+        <script type="text/javascript" src="components/slidingPanel/js/SlidingPanel.js"></script>
+        <script type="text/javascript" src="components/tableOfContents/js/TableOfContents.js"></script>
+        <script type="text/javascript" src="framework/preferences/js/PrimaryBuilder.js"></script>
+        <script type="text/javascript" src="framework/preferences/js/AuxBuilder.js"></script>
+        <script type="text/javascript" src="framework/preferences/js/StarterSchemas.js"></script>
+        <script type="text/javascript" src="framework/preferences/js/Builder.js"></script>
+        <script type="text/javascript" src="components/uiOptions/js/UIOptions.js"></script>
+        <script type="text/javascript" src="lib/loadpreferences.js"></script>
 
     </head>
 
     <body class="prefsEditor-demo-theme fl-focus">
         <script type="text/javascript">
-            var f = null;
+            var f;
             $(document).ready(function () {
                 f = fluid.uiOptions.prefsEditor(".flc-prefsEditor-separatedPanel", {
-                    terms: {
-                        "templatePrefix": "lib/infusion/src/framework/preferences/html",
-                        "messagePrefix": "lib/infusion/src/framework/preferences/messages"
-                    },
-                    "tocTemplate": "lib/infusion/src/components/tableOfContents/html/TableOfContents.html"
+                    "templatePrefix": "html-custom/",
+                    "messagePrefix": "framework/preferences/messages/",
+                    "tocTemplate": "components/tableOfContents/html/TableOfContents.html"
                 });
                 window.console.log(f);
             });
 
             var returnCallback = function() {
-                
-                //f.prefsEditorLoader.applier.change("preferences.fluid_prefs_textSize", 1.5);
-
-                document.cookie="fluid-ui-settings=%7B%22preferences%22%3A%7B%22fluid_prefs_textSize%22%3A1.5%2C%22fluid_prefs_textFont%22%3A%22comic%22%2C%22fluid_prefs_contrast%22%3A%22lgdg%22%7D%7D";
-                //Save the preferences in the fluid-ui-settings cookie
-                f.prefsEditorLoader.prefsEditor.fetch("afterReset");
-                //f.prefsEditorLoader.slidingPanel.showPanel();
-                //f.prefsEditorLoader.slidingPanel.hidePanel();
+                window.console.log(f);
+                f.prefsEditorLoader.prefsEditor.model.fluid_prefs_contrast = "lgdg";
+                f.prefsEditorLoader.settings.fluid_prefs_contrast = "lgdg";
+                //f.prefsEditorLoader.prefsEditor.save();
+                f.prefsEditorLoader.prefsEditor.events.onPrefsEditorRefresh.fire();
+                f.prefsEditorLoader.prefsEditor.events.onUpdateEnhancerModel.fire();
+                /*var l = fluid.preferencesCallback();
+                l.setpreferences();*/
             }
-
         </script>
 
         
