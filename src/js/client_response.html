@@ -6,6 +6,8 @@
 <script>
 if(typeof(Storage) !== "undefined") {
 	localStorage.setItem("Preferences", __JSON_STRINGIFY__);
+    window.opener.returnCallback();
+    window.close();
 } else {
     console.log("localStorage not suppported");
 }
