@@ -7,7 +7,6 @@ fluid.registerNamespace("gpii.express.middleware.passport.initialize");
 
 gpii.express.middleware.passport.initialize.init = function (that) {
     that.passport =  that.options.config.express.passport.initialize();
-    console.log("Passport initialized");
 };
 
 gpii.express.middleware.passport.initialize.middleware = function (that, req, res, next) {

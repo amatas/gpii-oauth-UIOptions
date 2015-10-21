@@ -8,7 +8,6 @@ fluid.registerNamespace("gpii.express.middleware.passport.session");
 gpii.express.middleware.passport.session.init = function (that) {
     var passport =  that.options.config.express.passport.session();
     that.options.passportSession = passport;
-    console.log("Passport session initialized");
 };
 
 gpii.express.middleware.passport.session.middleware = function (that, req, res, next) {
