@@ -37,7 +37,7 @@ fluid.defaults("gpii.oauth.tests.router.caseHolder", {
                         {
                             listener: "gpii.oauth.tests.router.caseHolder.verifyContent",
                             event: "{staticRequest}.events.onComplete",
-                            args: ["{staticRequest}.nativeResponse", "{arguments}.0", "sample static content"]
+                            args: ["{staticRequest}.nativeResponse", "{arguments}.0", "markup for Preference Editor"]
                         }
                     ]
                 }
