@@ -16,64 +16,64 @@ require("./passport-session.js");
 
 fluid.registerNamespace("gpii.oauth.client");
 
-gpii.oauth.client.initializePassport = function (config, express) {
+gpii.oauth.client.initializePassport = function (config) {
 
     config.express.passport.use("UIOptions",new OAuth2Strategy({
-        authorizationURL: "http://" + config.oauth.provider.host + "/authorize",
-        tokenURL: "http://" + config.oauth.provider.host + "/access_token",
-        clientID: config.oauth.clientId,
-        clientSecret: config.oauth.clientSecret,
-        callbackURL: "http://" + config.oauth.consumer.host + "/preferences/callback"
-      },
-      function (accessToken, refreshToken, profile, done) {
-        done(null, { accessToken: accessToken });
-      }
+            authorizationURL: "http://" + config.oauth.provider.host + "/authorize",
+            tokenURL: "http://" + config.oauth.provider.host + "/access_token",
+            clientID: config.oauth.clientId,
+            clientSecret: config.oauth.clientSecret,
+            callbackURL: "http://" + config.oauth.consumer.host + "/preferences/callback"
+        },
+        function (accessToken, refreshToken, profile, done) {
+            done(null, { accessToken: accessToken });
+        }
     ));
     config.express.passport.serializeUser(function(preferences, done) {
-      return done(null, preferences);
+        return done(null, preferences);
     });
 
     config.express.passport.deserializeUser(function(preferences, done) {
-      return done(null, preferences);
+        return done(null, preferences);
     });
-};
-
-var auxfunction = function(accessToken, callback) {
-    var options = {
-        hostname: "localhost",
-        port: "8081",
-        path: "/settings",
-        headers: {
-            "Authorization": "Bearer " + accessToken
-        }
-    };
-
-    var req = http.request(options, function (res) {
-        res.setEncoding("utf8");
-        var body = "";
-        res.on("data", function (chunk) {
-            body += chunk;
-        });
-        res.on("end", function () {
-            console.log("Got " + options.path + " response: " + body);
-            callback(body);
-        });
-    });
-
-    req.end();
 };
 
 gpii.oauth.client.getPreferences = function (req, res) {
-    auxfunction(req.user.accessToken, function (responseData) {
+    (function(accessToken, callback) {
+
+        var options = {
+            hostname: "localhost",
+            port: "8081",
+            path: "/settings",
+            headers: {
+                "Authorization": "Bearer " + accessToken
+            }
+        };
+
+        var req = http.request(options, function (res) {
+            res.setEncoding("utf8");
+            var body = "";
+            res.on("data", function (chunk) {
+                body += chunk;
+            });
+            res.on("end", function () {
+                console.log("Got " + options.path + " response: " + body);
+                callback(body);
+            });
+        });
+
+        req.end();
+    })(req.user.accessToken, function (responseData) {
+
         var response = "";
+
         require('fs').readFile("./src/js/client_response.html", "utf-8", function (err,data) {
             if (err) console.log(err);
             response = String(data).replace("__JSON_STRINGIFY__", JSON.stringify(responseData));
             res.status(200).send(response);
         });
-        
+
     });
-    
 };
 
 fluid.defaults("gpii.oauth.client",{
@@ -106,7 +106,7 @@ fluid.defaults("gpii.oauth.client",{
     listeners: {
         onStarted: {
             funcName: "gpii.oauth.client.initializePassport",
-            args:   ["{that}.options.config","{gpii.express}.express"]
+            args:   ["{that}.options.config"]
         }
     },
     components: {
@@ -132,7 +132,7 @@ fluid.defaults("gpii.oauth.client",{
                 path: "/preferences",
                 invokers: {
                     route: {
-                        func: passport.authenticate('UIOptions', {scope: "scope_1"})
+                        func: passport.authenticate('UIOptions', { scope: "scope_1" })
                     }
                 }
             }
